@@ -1,9 +1,4 @@
-resource "aws_s3_bucket" "bucket" {
-  # Adicione o workspace aqui também para coincidir com o data source
-  bucket = "${var.org_name}-bucket-iac-03022026-${terraform.workspace}"
-
-  tags = {
-    Name = "Primeiro bucket"
-    Iac  = "true"
-  }
+module "s3" {
+  source         = "./modules/s3"
+  s3_bucket_name = "aab-bucket-iac-03022026"
 }
