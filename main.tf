@@ -22,12 +22,12 @@ module "cloudfront" {
   ]
 }
 
-module "sqs" {
-  source     = "terraform-aws-modules/sqs/aws"
-  name       = "AABIACSQS"
-  create_dlq = true
-  tags = {
-    Iac = true
-  }
+# module "sqs" {
+#   source     = "terraform-aws-modules/sqs/aws"
+#   name       = "aab-iac-sqs"
+#   create_dlq = true
+#   tags = {
+#     Iac = true
+#   }
 
-}
+# }
