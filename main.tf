@@ -21,3 +21,13 @@ module "cloudfront" {
     module.s3
   ]
 }
+
+module "sqs" {
+  source     = "terraform-aws-modules/sqs/aws"
+  name       = "AABIACSQS"
+  create_dlq = true
+  tags = {
+    Iac = true
+  }
+
+}
