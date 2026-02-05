@@ -5,9 +5,27 @@ terraform {
       version = "6.28.0"
     }
   }
+
+  backend "s3" {
+    bucket  = "aab-iac-state-bucket-tf"
+    region  = "us-east-2"
+    profile = "AdministratorAccess-530482047728"
+    key     = "terraform.tfstate"
+    encrypt = true
+  }
 }
+
+
 
 provider "aws" {
   region  = "us-east-2"
   profile = "AdministratorAccess-530482047728"
+}
+
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = var.state_bucket
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
